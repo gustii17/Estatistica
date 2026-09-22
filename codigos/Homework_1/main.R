@@ -4,7 +4,8 @@ rm(list = ls())
 options(digits = 4)
 
 # Carrega o dataset original
-dados_originais <- read.csv("HW1_bike_sharing.csv", row.names = 1)
+folder_path <- "/Users/fabiomachadomilan/Estatistica/codigos/Homework_1/"
+dados_originais <- read.csv(paste0(folder_path,"HW1_bike_sharing.csv"), row.names = 1)
 
 # Questão 1
 cat("\n")
@@ -24,8 +25,8 @@ r <- 1 + (M %% 100)
 cat("r = 1 + (M mod 100) = 1 + (", M, " mod 100) = ", r, "\n", sep = "")
 
 # Seleciona 300 observações consecutivas
-data_group <- dados_originais[r:(r+300), ]
-View(data_group)
+data_group <- dados_originais[r:(r+299), ] #[GGRM] + 300 estava selecionando no final 301, ajustei isso
+#View(data_group)
 
 cat("\n Amostra do Grupo \n")
 cat("Dimensões de data_group: ", nrow(data_group), " x ", ncol(data_group), "\n", sep = "")
