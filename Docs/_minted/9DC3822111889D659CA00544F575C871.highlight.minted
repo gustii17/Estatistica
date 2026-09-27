@@ -1,0 +1,370 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{rm}\PYG{p}{(}\PYG{n}{list}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{ls}\PYG{p}{())}\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{}Cleaning environment}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{digits}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Set your folder path correctly (adjust if necessary before running!)}
+\PYG{n}{folder\PYGZus{}path}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/codigos/Homework\PYGZus{}1/\PYGZdq{}}
+
+\PYG{n+nf}{load}\PYG{p}{(}\PYG{n+nf}{paste0}\PYG{p}{(}\PYG{n}{folder\PYGZus{}path}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}data\PYGZus{}group.RData\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{data\PYGZus{}g10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{[}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{]}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}CHECKING DATA LOADING\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   \PYGZgt{} data\PYGZus{}g10\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{head}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10}\PYG{p}{))}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n \PYGZgt{} data\PYGZus{}group\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{tail}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{))}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Question 3: Low usage analysis\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 1. Analyse system usage for each season of the year.}
+\PYG{c+c1}{\PYGZsh{} For each season, calculate the mean, median, and standard deviation of total\PYGZus{}user,}
+\PYG{c+c1}{\PYGZsh{} and determine the proportion of days classified as low\PYGZus{}usage. Construct a boxplot}
+\PYG{c+c1}{\PYGZsh{} comparing the seasons and discuss the main differences observed.}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n3.1 Per season usage\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n First 10th verification\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Season: spring (only for the 10th)\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}g10\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{season}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}g10\PYGZus{}spring}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{sum\PYGZus{}10\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{n\PYGZus{}10\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}mean\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}10\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{n\PYGZus{}10\PYGZus{}spring}
+
+\PYG{n}{mean\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual mean = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}10\PYGZus{}spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} / \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n\PYGZus{}10\PYGZus{}spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users\PYGZus{}ordered}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sort}\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Ordered values: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users\PYGZus{}ordered}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}median\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users\PYGZus{}ordered}\PYG{p}{[}\PYG{l+m}{5}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users\PYGZus{}ordered}\PYG{p}{[}\PYG{l+m}{6}\PYG{p}{])}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Median = (\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users\PYGZus{}ordered}\PYG{p}{[}\PYG{l+m}{5}\PYG{p}{],}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} + \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users\PYGZus{}ordered}\PYG{p}{[}\PYG{l+m}{6}\PYG{p}{],}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}) / 2 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}median\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{median\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+
+
+\PYG{n}{squared\PYGZus{}deviations\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}mean\PYGZus{}10spring}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}
+\PYG{n}{sum\PYGZus{}sqr\PYGZus{}dev\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{squared\PYGZus{}deviations\PYGZus{}10spring}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}variance\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}sqr\PYGZus{}dev\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n\PYGZus{}10\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}std\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{n}{manual\PYGZus{}variance\PYGZus{}10spring}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Standard Deviation = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}std\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{std\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{spring\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+
+
+\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}spring}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}spring}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Proportion of low\PYGZus{}usage days = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{prop\PYGZus{}low\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}spring}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   COMPARATIONS\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   Manual mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}mean\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}mean\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10spring}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual median: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}median\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}median\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{median\PYGZus{}10spring}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}std\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}std\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{std\PYGZus{}10spring}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}10spring}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10spring}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}10spring}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n All data\PYGZus{}group\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Season: SPRING\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{season}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{spring\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}spring}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+\PYG{n}{mean\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{spring\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{median\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{spring\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{spring\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}spring}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}spring}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{spring\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}spring}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     median: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}spring}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}spring}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}spring}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Season: SUMMER\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}summer}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{season}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n}{summer\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}summer}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+\PYG{n}{mean\PYGZus{}summer}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{summer\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{median\PYGZus{}summer}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{summer\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}summer}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{summer\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}summer}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}summer}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{summer\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}summer}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     median: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}summer}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}summer}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}summer}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Season: AUTUMN\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}autumn}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{season}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{3}\PYG{p}{)}
+\PYG{n}{autumn\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}autumn}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+\PYG{n}{mean\PYGZus{}autumn}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{autumn\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{median\PYGZus{}autumn}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{autumn\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}autumn}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{autumn\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}autumn}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}autumn}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{autumn\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}autumn}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     median: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}autumn}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}autumn}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}autumn}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Season: WINTER\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}winter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{season}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
+\PYG{n}{winter\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}winter}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+\PYG{n}{mean\PYGZus{}winter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{winter\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{median\PYGZus{}winter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{winter\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}winter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{winter\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}winter}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}winter}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{winter\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}winter}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     median: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}winter}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}winter}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}winter}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{pdf}\PYG{p}{(}\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/Docs/assets/boxplot\PYGZus{}season.pdf\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{width}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{8}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{height}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{6}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{season\PYGZus{}name}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{factor}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{season}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                                }\PYG{n}{levels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }
+\PYG{+w}{                                }\PYG{n}{labels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Spring\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Summer\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Autumn\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Winter\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n+nf}{boxplot}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n}{season\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Boxplot: Total Users per Season\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{xlab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Season\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Total Users\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}lightgreen\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}orange\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}yellow\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}lightblue\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 2. Analyse system usage as a function of weather conditions. }
+\PYG{c+c1}{\PYGZsh{} For each condition, calculate the mean and standard deviation}
+\PYG{c+c1}{\PYGZsh{} of total\PYGZus{}user, and determine the proportion of days classified as low\PYGZus{}usage. }
+\PYG{c+c1}{\PYGZsh{} Use appropriate statistical measures and plots to compare the weather conditions }
+\PYG{c+c1}{\PYGZsh{} (“Clear”, “Cloudy”, “Light Rain”, and “Heavy Rain).}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n3.2 Per weather condition usage\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n First 10th verification\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Weather Condition: clear \PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}g10\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weathersit}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{clear\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}g10\PYGZus{}clear}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{sum\PYGZus{}10\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{clear\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{n\PYGZus{}10\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{clear\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}mean\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}10\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{n\PYGZus{}10\PYGZus{}clear}
+
+\PYG{n}{mean\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{clear\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual mean = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}10\PYGZus{}clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} / \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n\PYGZus{}10\PYGZus{}clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{squared\PYGZus{}deviations\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{clear\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}mean\PYGZus{}10clear}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}
+\PYG{n}{sum\PYGZus{}sqr\PYGZus{}dev\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{squared\PYGZus{}deviations\PYGZus{}10clear}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}variance\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}sqr\PYGZus{}dev\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n\PYGZus{}10\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}std\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{n}{manual\PYGZus{}variance\PYGZus{}10clear}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Standard Deviation = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}std\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{std\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{clear\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Added low usage for 10th clear}
+\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}clear}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}clear}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}clear}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   COMPARATIONS\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   Manual mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}mean\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}mean\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10clear}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}std\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}std\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{std\PYGZus{}10clear}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual low\PYGZus{}usage: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}10clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10clear}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}10clear}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Weather Condition: cloudy \PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}g10\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weathersit}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n}{cloudy\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}g10\PYGZus{}cloudy}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{sum\PYGZus{}10\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{n\PYGZus{}10\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}mean\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}10\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{n\PYGZus{}10\PYGZus{}cloudy}
+
+\PYG{n}{mean\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual mean = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}10\PYGZus{}cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} / \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n\PYGZus{}10\PYGZus{}cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{squared\PYGZus{}deviations\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}mean\PYGZus{}10cloudy}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}
+\PYG{n}{sum\PYGZus{}sqr\PYGZus{}dev\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{squared\PYGZus{}deviations\PYGZus{}10cloudy}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}variance\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}sqr\PYGZus{}dev\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n\PYGZus{}10\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{manual\PYGZus{}std\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{n}{manual\PYGZus{}variance\PYGZus{}10cloudy}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Standard Deviation = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}std\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{std\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}g10\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{+w}{  }
+\PYG{c+c1}{\PYGZsh{} Added low usage for 10th cloudy}
+\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}cloudy}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}cloudy}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10\PYGZus{}cloudy}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+\PYG{+w}{  }
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   COMPARATIONS\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   Manual mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}mean\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}mean\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}10cloudy}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}std\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}std\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{std\PYGZus{}10cloudy}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual low\PYGZus{}usage: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}10cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}prop\PYGZus{}low\PYGZus{}10cloudy}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}10cloudy}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n All data\PYGZus{}group\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Weather Condition: CLEAR\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weathersit}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{clear\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}clear}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{mean\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{clear\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{clear\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}clear}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}clear}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{clear\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}clear}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}clear}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}clear}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Weather Condition: CLOUDY\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weathersit}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n}{cloudy\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}cloudy}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{mean\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}cloudy}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}cloudy}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{cloudy\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}cloudy}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}cloudy}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}cloudy}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Weather Condition: LIGHT RAIN\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}light\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weathersit}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{3}\PYG{p}{)}
+\PYG{n}{light\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}light\PYGZus{}rain}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{mean\PYGZus{}light\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{light\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{std\PYGZus{}light\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{light\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low\PYGZus{}light\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}light\PYGZus{}rain}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{light\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}light\PYGZus{}rain}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}light\PYGZus{}rain}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}light\PYGZus{}rain}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Weather Condition: HEAVY RAIN\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}heavy\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{subset}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weathersit}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Checked with na.rm = TRUE in case category 4 has 0 days}
+\PYG{k+kr}{if}\PYG{p}{(}\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}heavy\PYGZus{}rain}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m}{0}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n}{heavy\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}heavy\PYGZus{}rain}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+\PYG{+w}{  }\PYG{n}{mean\PYGZus{}heavy\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{heavy\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n}{std\PYGZus{}heavy\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{heavy\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n}{prop\PYGZus{}low\PYGZus{}heavy\PYGZus{}rain}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}heavy\PYGZus{}rain}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+\PYG{+w}{  }
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     n: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{heavy\PYGZus{}rain\PYGZus{}total\PYGZus{}users}\PYG{p}{),}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     mean: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}heavy\PYGZus{}rain}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     std: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{std\PYGZus{}heavy\PYGZus{}rain}\PYG{p}{,}\PYG{+w}{  }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     low\PYGZus{}usage days: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{prop\PYGZus{}low\PYGZus{}heavy\PYGZus{}rain}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}     No Heavy Rain days in the dataset.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n+nf}{pdf}\PYG{p}{(}\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/Docs/assets/boxplot\PYGZus{}weather.pdf\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{width}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{height}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4.5}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Plotting the Weather condition comparison}
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{weather\PYGZus{}name}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{factor}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{weathersit}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                                  }\PYG{n}{levels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }
+\PYG{+w}{                                  }\PYG{n}{labels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Clear\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Cloudy\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Light Rain\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Heavy Rain\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n+nf}{boxplot}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n}{weather\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Boxplot: Total Users per Weather\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{xlab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Weather Condition\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Total Users\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZsh{}a6cee3\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZsh{}1f78b4\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZsh{}b2df8a\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZsh{}33a02c\PYGZdq{}}\PYG{p}{))}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 3. Investigate the relationship between temperature and total\PYGZus{}user.}
+\PYG{c+c1}{\PYGZsh{} Construct a scatter plot and calculate the correlation coefficient.}
+\PYG{c+c1}{\PYGZsh{} Interpret the direction and strength of the association and discuss possible}
+\PYG{c+c1}{\PYGZsh{} limitations of the correlation coefficient in describing the observed relationship.}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n3.3 Temperature vs Total Users Correlation\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n First 10th verification\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}g10}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}
+\PYG{n}{users\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}g10}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+\PYG{n}{n\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{temp\PYGZus{}10}\PYG{p}{)}
+
+\PYG{n}{mean\PYGZus{}temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{temp\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{mean\PYGZus{}users\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{users\PYGZus{}10}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Deviations from the mean}
+\PYG{n}{dev\PYGZus{}temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}temp\PYGZus{}10}
+\PYG{n}{dev\PYGZus{}users\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{users\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{mean\PYGZus{}users\PYGZus{}10}
+
+\PYG{n}{sum\PYGZus{}prod\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{dev\PYGZus{}temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{dev\PYGZus{}users\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{sum\PYGZus{}sq\PYGZus{}temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{dev\PYGZus{}temp\PYGZus{}10}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n}{sum\PYGZus{}sq\PYGZus{}users\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{dev\PYGZus{}users\PYGZus{}10}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Manual Pearson correlation formula}
+\PYG{n}{manual\PYGZus{}r\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}prod\PYGZus{}10}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{n}{sum\PYGZus{}sq\PYGZus{}temp\PYGZus{}10}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{sum\PYGZus{}sq\PYGZus{}users\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{r\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{cor}\PYG{p}{(}\PYG{n}{temp\PYGZus{}10}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{users\PYGZus{}10}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual r = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}r\PYGZus{}10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n   COMPARATIONS\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Manual r: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{manual\PYGZus{}r\PYGZus{}10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{r\PYGZus{}10}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diference: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{manual\PYGZus{}r\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{r\PYGZus{}10}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n All data\PYGZus{}group\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Cor in R for the full dataset}
+\PYG{n}{r\PYGZus{}all}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{cor}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   Correlation coefficient (r) = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{r\PYGZus{}all}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{pdf}\PYG{p}{(}\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/Docs/assets/scatter\PYGZus{}temp.pdf\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{width}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{12}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{height}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{9}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Scatter plot for total\PYGZus{}user vs Temperature}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{pch}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{19}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}darkblue\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Scatter Plot: Temperature vs. Total Users\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{xlab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Temperature\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Total Users\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 4. Based on the analyses performed in this question, }
+\PYG{c+c1}{\PYGZsh{} select two characteristics that appear to be most strongly }
+\PYG{c+c1}{\PYGZsh{} associated with system usage. Justify your choice based on }
+\PYG{c+c1}{\PYGZsh{} the statistical and/or graphical results.}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n3.4 Final Feature Selection\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n My choice: Temperature and Weather Conditions.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Reason: Linear correlation confirmed by \PYGZsq{}r\PYGZsq{} and scatter plot. Boxplots show maximum values declining when tending to rain, which makes a lot of sense since it is a bike system.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{pdf}\PYG{p}{(}\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/Docs/assets/boxplots\PYGZus{}temp.pdf\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{width}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{14}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{height}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4.5}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} Putting the final justification plots side\PYGZhy{}by\PYGZhy{}side}
+\PYG{n+nf}{par}\PYG{p}{(}\PYG{n}{mfrow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} Plot A: Temperature by Season}
+\PYG{n+nf}{boxplot}\PYG{p}{(}\PYG{n}{temp}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n}{season\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Temperature by Season\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{xlab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Season\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Temperature\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}lightgreen\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}orange\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}yellow\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}lightblue\PYGZdq{}}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} Plot B: Temperature by Weather Condition}
+\PYG{n+nf}{boxplot}\PYG{p}{(}\PYG{n}{temp}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{+w}{ }\PYG{n}{weather\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Temperature by Weather Condition\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{xlab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Weather Condition\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{        }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Temperature\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZsh{}a6cee3\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZsh{}1f78b4\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZsh{}b2df8a\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZsh{}33a02c\PYGZdq{}}\PYG{p}{))}
+
+\PYG{n+nf}{par}\PYG{p}{(}\PYG{n}{mfrow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{))}\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{} Reset plot window}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+\end{MintedVerbatim}

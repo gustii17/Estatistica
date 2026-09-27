@@ -1,0 +1,237 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Matriculas: 554934, 546474, 578412}
+
+\PYG{n+nf}{rm}\PYG{p}{(}\PYG{n}{list}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{ls}\PYG{p}{())}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{digits}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Carrega o dataset original}
+\PYG{n}{folder\PYGZus{}path}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/codigos/Homework\PYGZus{}1/\PYGZdq{}}
+\PYG{n}{dados\PYGZus{}originais}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{n+nf}{paste0}\PYG{p}{(}\PYG{n}{folder\PYGZus{}path}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}HW1\PYGZus{}bike\PYGZus{}sharing.csv\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{row.names}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Questão 1}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nQuestão 1: Construção do datase\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Números de matrícula do grupo}
+\PYG{n}{matriculas}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{554934}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{546474}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{578412}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nInformações do Grupo\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Números de matrícula: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{matriculas}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Calcula M e r}
+\PYG{n}{M}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{max}\PYG{p}{(}\PYG{n}{matriculas}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Maior número de matrícula (M): \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{M}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{r}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{M}\PYG{+w}{ }\PYG{o}{\PYGZpc{}\PYGZpc{}}\PYG{+w}{ }\PYG{l+m}{100}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}r = 1 + (M mod 100) = 1 + (\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{M}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} mod 100) = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{r}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Seleciona 300 observações consecutivas}
+\PYG{n}{data\PYGZus{}group}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{dados\PYGZus{}originais}\PYG{p}{[}\PYG{n}{r}\PYG{o}{:}\PYG{p}{(}\PYG{n}{r}\PYG{l+m}{+299}\PYG{p}{),}\PYG{+w}{ }\PYG{p}{]}\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{}[GGRM] + 300 estava selecionando no final 301, ajustei isso}
+\PYG{c+c1}{\PYGZsh{}View(data\PYGZus{}group)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Amostra do Grupo \PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Dimensões de data\PYGZus{}group: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} x \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{ncol}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Primeira data: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{as.character}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{dteday}\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Última data: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{as.character}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{dteday}\PYG{p}{[}\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{)]),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nPrimeiras 10 observações de data\PYGZus{}group:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{head}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{10}\PYG{p}{))}
+
+
+\PYG{c+c1}{\PYGZsh{} PRIMEIRAS 10 OBSERVAÇÕES}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}As Primeiras 10 Observações\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{dados\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{[}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{]}
+\PYG{n}{dados\PYGZus{}10}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{dados\PYGZus{}10}\PYG{o}{\PYGZdl{}}\PYG{n}{casual}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{dados\PYGZus{}10}\PYG{o}{\PYGZdl{}}\PYG{n}{registered}
+\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{dados\PYGZus{}10}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nValores de total\PYGZus{}user (primeiras 10):\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} MÉDIA}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n Média \PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{soma}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{n}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{media\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{soma}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n}{n}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Média = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{soma}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} / \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{media\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} MEDIANA}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nMediana\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sort}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Valores ordenados: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+\PYG{n}{mediana\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{l+m}{5}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{l+m}{6}\PYG{p}{])}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m}{2}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Mediana = (\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{l+m}{5}\PYG{p}{],}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} + \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{l+m}{6}\PYG{p}{],}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}) / 2 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mediana\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} DESVIO PADRÃO}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nDesvio Padrão\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{desvios\PYGZus{}quadrados}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{media\PYGZus{}manual}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{2}
+\PYG{n}{soma\PYGZus{}dev\PYGZus{}quad}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{desvios\PYGZus{}quadrados}\PYG{p}{)}
+\PYG{n}{variancia\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{soma\PYGZus{}dev\PYGZus{}quad}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n}{desvio\PYGZus{}padrao\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sqrt}\PYG{p}{(}\PYG{n}{variancia\PYGZus{}manual}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Desvio Padrão = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{desvio\PYGZus{}padrao\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} QUARTIS}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nQuantis\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{q1\PYGZus{}pos}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{0.25}
+\PYG{n}{q3\PYGZus{}pos}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{n}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{0.75}
+\PYG{n}{q1\PYGZus{}idx\PYGZus{}lower}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{floor}\PYG{p}{(}\PYG{n}{q1\PYGZus{}pos}\PYG{p}{)}
+\PYG{n}{q1\PYGZus{}idx\PYGZus{}upper}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{ceiling}\PYG{p}{(}\PYG{n}{q1\PYGZus{}pos}\PYG{p}{)}
+\PYG{n}{q1\PYGZus{}frac}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q1\PYGZus{}pos}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{floor}\PYG{p}{(}\PYG{n}{q1\PYGZus{}pos}\PYG{p}{)}
+\PYG{n}{q1\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{n}{q1\PYGZus{}idx\PYGZus{}lower}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{q1\PYGZus{}frac}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{n}{q1\PYGZus{}idx\PYGZus{}upper}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{n}{q1\PYGZus{}idx\PYGZus{}lower}\PYG{p}{])}
+
+\PYG{n}{q3\PYGZus{}idx\PYGZus{}lower}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{floor}\PYG{p}{(}\PYG{n}{q3\PYGZus{}pos}\PYG{p}{)}
+\PYG{n}{q3\PYGZus{}idx\PYGZus{}upper}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{ceiling}\PYG{p}{(}\PYG{n}{q3\PYGZus{}pos}\PYG{p}{)}
+\PYG{n}{q3\PYGZus{}frac}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q3\PYGZus{}pos}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{floor}\PYG{p}{(}\PYG{n}{q3\PYGZus{}pos}\PYG{p}{)}
+\PYG{n}{q3\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{n}{q3\PYGZus{}idx\PYGZus{}lower}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{q3\PYGZus{}frac}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{n}{q3\PYGZus{}idx\PYGZus{}upper}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user\PYGZus{}10\PYGZus{}ordenado}\PYG{p}{[}\PYG{n}{q3\PYGZus{}idx\PYGZus{}lower}\PYG{p}{])}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q1 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q1\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q2 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mediana\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q3 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q3\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}IQR = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q3\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q1\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} VERIFICAÇÃO COM R}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Verificação com R das primeiras 10 observações\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{media\PYGZus{}r}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{mediana\PYGZus{}r}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+\PYG{n}{desvio\PYGZus{}r}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{total\PYGZus{}user\PYGZus{}10}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nMédia \PYGZhy{} Manual: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{media\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{media\PYGZus{}r}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | Diferença: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{abs}\PYG{p}{(}\PYG{n}{media\PYGZus{}manual}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{media\PYGZus{}r}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Mediana \PYGZhy{} Manual: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mediana\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mediana\PYGZus{}r}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Desvio Padrão \PYGZhy{} Manual: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{desvio\PYGZus{}padrao\PYGZus{}manual}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} | R: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{desvio\PYGZus{}r}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} QUESTÃO 2}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Questão 2: Caracterização do Dataset\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Define total\PYGZus{}user para todo o data\PYGZus{}group}
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{casual}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{registered}
+
+\PYG{c+c1}{\PYGZsh{} 2.1}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n2.1 Classificação das variaveis\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nCategorias de SEASON:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{table}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{season}\PYG{p}{))}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nCategorias de WEATHERSIT:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{table}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{weathersit}\PYG{p}{))}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nValores ausentes:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{colSums}\PYG{p}{(}\PYG{n+nf}{is.na}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{)))}
+
+\PYG{c+c1}{\PYGZsh{} 2.2}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZbs{}n2.2 Medidas de Tendência Central\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{variaveis\PYGZus{}numericas}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}temp\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}casual\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}registered\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}total\PYGZus{}user\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k+kr}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{var}\PYG{+w}{ }\PYG{k+kr}{in}\PYG{+w}{ }\PYG{n}{variaveis\PYGZus{}numericas}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{var}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}:\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n}{media}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{[[}\PYG{n}{var}\PYG{p}{]],}\PYG{+w}{ }\PYG{n}{na.rm}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n}{mediana}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{[[}\PYG{n}{var}\PYG{p}{]],}\PYG{+w}{ }\PYG{n}{na.rm}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Média: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{media}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Mediana: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{mediana}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{k+kr}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{media}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{mediana}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Assimetria: Positiva\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k+kr}{else}\PYG{+w}{ }\PYG{k+kr}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{media}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{mediana}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Assimetria: Negativa\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+c1}{\PYGZsh{} 2.3}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZbs{}n2.3 Quartis e Intervalo Interquartil\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nVariavel analisada: total\PYGZus{}user\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}
+
+\PYG{n}{q1}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{quantile}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0.25}\PYG{p}{)}
+\PYG{n}{q2}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{quantile}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0.50}\PYG{p}{)}
+\PYG{n}{q3}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{quantile}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{probs}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0.75}\PYG{p}{)}
+\PYG{n}{iqr}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q3}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q1}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nQ1 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q2 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q3 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}IQR = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{iqr}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{lim\PYGZus{}inf}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{1.5}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{iqr}
+\PYG{n}{lim\PYGZus{}sup}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{q3}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m}{1.5}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{iqr}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nLimites para outliers:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Inferior: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lim\PYGZus{}inf}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Superior: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lim\PYGZus{}sup}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{outliers}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{which}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{lim\PYGZus{}inf}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{lim\PYGZus{}sup}\PYG{p}{)}
+\PYG{n}{n\PYGZus{}outliers}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{outliers}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nNúmero de outliers: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n\PYGZus{}outliers}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} (\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{n\PYGZus{}outliers}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{100}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZpc{})\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} 2.4 Gráficos}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZbs{}n2.4 Gráficos\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{par}\PYG{p}{(}\PYG{n}{mfrow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{mar}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} Histograma}
+\PYG{n+nf}{hist}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{     }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Histograma: Total de Usuários\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{xlab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Total de Usuários\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Frequência\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}steelblue\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{breaks}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{30}\PYG{p}{)}
+\PYG{n+nf}{abline}\PYG{p}{(}\PYG{n}{v}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{q1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lwd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n+nf}{abline}\PYG{p}{(}\PYG{n}{v}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{q2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}green\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lwd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n+nf}{abline}\PYG{p}{(}\PYG{n}{v}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{q3}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}orange\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{lwd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n+nf}{legend}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}topleft\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Q1\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Q2\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Q3\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}green\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}orange\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{lty}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Boxplot}
+\PYG{n+nf}{boxplot}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{main}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Boxplot: Total de Usuários\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ylab}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Total de Usuários\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{col}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}steelblue\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{par}\PYG{p}{(}\PYG{n}{mfrow}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} Medidas de forma}
+\PYG{n}{skewness\PYGZus{}val}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{((}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{))}\PYG{o}{\PYGZca{}}\PYG{l+m}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{3}
+\PYG{n}{kurtosis\PYGZus{}val}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{((}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{))}\PYG{o}{\PYGZca{}}\PYG{l+m}{4}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{)}\PYG{o}{\PYGZca{}}\PYG{l+m}{4}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+m}{3}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nMedidas de forma:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Assimetria: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{skewness\PYGZus{}val}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Curtose: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{kurtosis\PYGZus{}val}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} 2.5}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZbs{}n2.5 Variavel low\PYGZus{}usage\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{ifelse}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{q1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{0}\PYG{p}{)}
+
+\PYG{n}{n\PYGZus{}low}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{sum}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+\PYG{n}{prop\PYGZus{}low}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nQ1 = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{q1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Dias com baixa utilização: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n\PYGZus{}low}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Proporção: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{prop\PYGZus{}low}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{100}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZpc{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nTabela de frequência:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{table}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{low\PYGZus{}usage}\PYG{p}{))}
+
+\PYG{c+c1}{\PYGZsh{} SALVAR}
+\PYG{n+nf}{write.csv}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}data\PYGZus{}group.csv\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{row.names}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{n+nf}{save}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}data\PYGZus{}group.RData\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} RESUMO}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Resumo Final\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nGrupo:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Matrículas: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{paste}\PYG{p}{(}\PYG{n}{matriculas}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{collapse}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}, \PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  M = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{M}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  r = \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{r}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Período: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{as.character}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{dteday}\PYG{p}{[}\PYG{l+m}{1}\PYG{p}{]),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} a \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{as.character}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{dteday}\PYG{p}{[}\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{)]),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Observações: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{nrow}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nEstatísticas de total\PYGZus{}user:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Média: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Mediana: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n+nf}{median}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Q1: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{q1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Q3: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{q3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  IQR: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{iqr}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Desvio Padrão: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n+nf}{sd}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nVariavel low\PYGZus{}usage:\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Dias com baixa utilização: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{n\PYGZus{}low}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}  Proporção: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{round}\PYG{p}{(}\PYG{n}{prop\PYGZus{}low}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{l+m}{100}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZpc{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}
