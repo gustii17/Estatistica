@@ -75,6 +75,7 @@ median_spring <- median(spring_total_users)
 std_spring <- sd(spring_total_users)
 prop_low_spring <- mean(data_spring$low_usage)
 
+cat("     n: ", length(spring_total_users),  "\n", sep = "")
 cat("     mean: ", mean_spring,  "\n", sep = "")
 cat("     median: ", median_spring,  "\n", sep = "")
 cat("     std: ", std_spring,  "\n", sep = "")
@@ -89,6 +90,7 @@ median_summer <- median(summer_total_users)
 std_summer <- sd(summer_total_users)
 prop_low_summer <- mean(data_summer$low_usage)
 
+cat("     n: ", length(summer_total_users),  "\n", sep = "")
 cat("     mean: ", mean_summer,  "\n", sep = "")
 cat("     median: ", median_summer,  "\n", sep = "")
 cat("     std: ", std_summer,  "\n", sep = "")
@@ -103,6 +105,7 @@ median_autumn <- median(autumn_total_users)
 std_autumn <- sd(autumn_total_users)
 prop_low_autumn <- mean(data_autumn$low_usage)
 
+cat("     n: ", length(autumn_total_users),  "\n", sep = "")
 cat("     mean: ", mean_autumn,  "\n", sep = "")
 cat("     median: ", median_autumn,  "\n", sep = "")
 cat("     std: ", std_autumn,  "\n", sep = "")
@@ -117,10 +120,13 @@ median_winter <- median(winter_total_users)
 std_winter <- sd(winter_total_users)
 prop_low_winter <- mean(data_winter$low_usage)
 
+cat("     n: ", length(winter_total_users),  "\n", sep = "")
 cat("     mean: ", mean_winter,  "\n", sep = "")
 cat("     median: ", median_winter,  "\n", sep = "")
 cat("     std: ", std_winter,  "\n", sep = "")
 cat("     low_usage days: ", prop_low_winter,  "\n", sep = "")
+
+pdf(file = "/Users/fabiomachadomilan/Estatistica/Docs/assets/boxplot_season.pdf", width = 8, height = 6)
 
 data_group$season_name <- factor(data_group$season, 
                                 levels = c(1, 2, 3, 4), 
@@ -131,7 +137,9 @@ boxplot(total_user ~ season_name,
         main = "Boxplot: Total Users per Season",
         xlab = "Season",
         ylab = "Total Users",
-        col = c("lightgreen", "yellow", "orange", "lightblue"))
+        col = c("lightgreen", "orange", "yellow", "lightblue"))
+
+dev.off()
 
 # ==============================================================================
 # 2. Analyse system usage as a function of weather conditions. 
@@ -210,6 +218,7 @@ clear_total_users <- data_clear$total_user
 mean_clear <- mean(clear_total_users)
 std_clear <- sd(clear_total_users)
 prop_low_clear <- mean(data_clear$low_usage)
+cat("     n: ", length(clear_total_users),  "\n", sep = "")
 cat("     mean: ", mean_clear,  "\n", sep = "")
 cat("     std: ", std_clear,  "\n", sep = "")
 cat("     low_usage days: ", prop_low_clear, "\n", sep = "")
@@ -222,6 +231,7 @@ cloudy_total_users <- data_cloudy$total_user
 mean_cloudy <- mean(cloudy_total_users)
 std_cloudy <- sd(cloudy_total_users)
 prop_low_cloudy <- mean(data_cloudy$low_usage)
+cat("     n: ", length(cloudy_total_users),  "\n", sep = "")
 cat("     mean: ", mean_cloudy,  "\n", sep = "")
 cat("     std: ", std_cloudy,  "\n", sep = "")
 cat("     low_usage days: ", prop_low_cloudy, "\n", sep = "")
@@ -235,6 +245,7 @@ light_rain_total_users <- data_light_rain$total_user
 mean_light_rain <- mean(light_rain_total_users)
 std_light_rain <- sd(light_rain_total_users)
 prop_low_light_rain <- mean(data_light_rain$low_usage)
+cat("     n: ", length(light_rain_total_users),  "\n", sep = "")
 cat("     mean: ", mean_light_rain,  "\n", sep = "")
 cat("     std: ", std_light_rain,  "\n", sep = "")
 cat("     low_usage days: ", prop_low_light_rain, "\n", sep = "")
@@ -250,12 +261,15 @@ if(nrow(data_heavy_rain) > 0) {
   std_heavy_rain <- sd(heavy_rain_total_users)
   prop_low_heavy_rain <- mean(data_heavy_rain$low_usage)
   
+  cat("     n: ", length(heavy_rain_total_users),  "\n", sep = "")
   cat("     mean: ", mean_heavy_rain,  "\n", sep = "")
   cat("     std: ", std_heavy_rain,  "\n", sep = "")
   cat("     low_usage days: ", prop_low_heavy_rain, "\n", sep = "")
 } else {
   cat("     No Heavy Rain days in the dataset.\n")
 }
+
+pdf(file = "/Users/fabiomachadomilan/Estatistica/Docs/assets/boxplot_weather.pdf", width = 7, height = 4.5)
 
 # Plotting the Weather condition comparison
 data_group$weather_name <- factor(data_group$weathersit, 
@@ -268,7 +282,7 @@ boxplot(total_user ~ weather_name,
         xlab = "Weather Condition",
         ylab = "Total Users",
         col = c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c"))
-
+dev.off()
 
 # ==============================================================================
 # 3. Investigate the relationship between temperature and total_user.
@@ -309,12 +323,14 @@ cat("\n All data_group\n")
 r_all <- cor(data_group$temp, data_group$total_user)
 cat("   Correlation coefficient (r) = ", r_all, "\n", sep="")
 
+pdf(file = "/Users/fabiomachadomilan/Estatistica/Docs/assets/scatter_temp.pdf", width = 12, height = 9)
 
 # Scatter plot for total_user vs Temperature
 plot(data_group$temp, data_group$total_user,
      pch = 19, col = "darkblue",
      main = "Scatter Plot: Temperature vs. Total Users",
      xlab = "Temperature", ylab = "Total Users")
+dev.off()
 
 
 # ==============================================================================
@@ -328,6 +344,7 @@ cat("\n3.4 Final Feature Selection\n")
 cat("\n My choice: Temperature and Weather Conditions.\n")
 cat(" Reason: Linear correlation confirmed by 'r' and scatter plot. Boxplots show maximum values declining when tending to rain, which makes a lot of sense since it is a bike system.\n")
 
+pdf(file = "/Users/fabiomachadomilan/Estatistica/Docs/assets/boxplots_temp.pdf", width = 14, height = 4.5)
 # Putting the final justification plots side-by-side
 par(mfrow = c(1, 2))
 
@@ -348,3 +365,4 @@ boxplot(temp ~ weather_name,
         col = c("#a6cee3", "#1f78b4", "#b2df8a", "#33a02c"))
 
 par(mfrow = c(1, 1)) # Reset plot window
+dev.off()
