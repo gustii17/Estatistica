@@ -5,9 +5,9 @@ Repositório destinado à resolução do Homework 1 da disciplina de TI0111 - Es
 O objetivo deste projeto é aplicar conceitos fundamentais de estatística descritiva para analisar o comportamento de usuários de um sistema de compartilhamento de bicicletas, extraindo métricas e plotando visualizações a partir do arquivo original `HW1_bike_sharing.csv`.
 
 ## 👥 Equipe
-* Davi Sousa Trevia Magalhaes (554934)
-* Giovanni Gabriel Remedy Milan (578412)
-* Gustavo Oliveira Seabra (567464)
+* Davi Sousa Trevia Magalhães
+* Giovanni Gabriel Remedy Milan
+* Gustavo Oliveira Seabra
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
 Todo o fluxo de trabalho, desde a análise de dados até a redação do relatório acadêmico, foi centralizado no **Visual Studio Code** utilizando as seguintes ferramentas:
