@@ -3,9 +3,11 @@
 \PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{digits}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
 
 \PYG{c+c1}{\PYGZsh{} Set your folder path correctly (adjust if necessary before running!)}
-\PYG{n}{folder\PYGZus{}path}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/codigos/Homework\PYGZus{}1/\PYGZdq{}}
-
-\PYG{n+nf}{load}\PYG{p}{(}\PYG{n+nf}{paste0}\PYG{p}{(}\PYG{n}{folder\PYGZus{}path}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}data\PYGZus{}group.RData\PYGZdq{}}\PYG{p}{))}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}rstudioapi\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }
+\PYG{n}{k}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{getSourceEditorContext}\PYG{p}{()}\PYG{o}{\PYGZdl{}}\PYG{n}{path}\PYG{+w}{ }
+\PYG{n+nf}{setwd}\PYG{p}{(}\PYG{n+nf}{dirname}\PYG{p}{(}\PYG{n}{k}\PYG{p}{))}\PYG{+w}{ }
+\PYG{c+c1}{\PYGZsh{}folder\PYGZus{}path \PYGZlt{}\PYGZhy{} \PYGZdq{}/Users/fabiomachadomilan/Estatistica/codigos/Homework\PYGZus{}1/\PYGZdq{}}
+\PYG{n+nf}{load}\PYG{p}{(}\PYG{n+nf}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}data\PYGZus{}group.RData\PYGZdq{}}\PYG{p}{))}
 \PYG{n}{data\PYGZus{}g10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{[}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{]}
 
 \PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}CHECKING DATA LOADING\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}

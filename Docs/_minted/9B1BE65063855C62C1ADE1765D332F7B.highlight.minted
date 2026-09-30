@@ -1,0 +1,231 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{rm}\PYG{p}{(}\PYG{n}{list}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{ls}\PYG{p}{())}\PYG{+w}{ }\PYG{c+c1}{\PYGZsh{}Cleaning environment}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}014\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{digits}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}instale os pacotes para rodar o código}
+\PYG{c+c1}{\PYGZsh{}install.packages(\PYGZdq{}fpp3\PYGZdq{})}
+\PYG{c+c1}{\PYGZsh{}install.packages(\PYGZdq{}rstudioapi\PYGZdq{})}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{fpp3}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}rstudioapi\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }
+
+
+\PYG{c+c1}{\PYGZsh{}importando os dados que serão usado}
+\PYG{n}{k}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{getSourceEditorContext}\PYG{p}{()}\PYG{o}{\PYGZdl{}}\PYG{n}{path}\PYG{+w}{ }
+\PYG{n+nf}{setwd}\PYG{p}{(}\PYG{n+nf}{dirname}\PYG{p}{(}\PYG{n}{k}\PYG{p}{))}\PYG{+w}{ }
+\PYG{n+nf}{load}\PYG{p}{(}\PYG{n+nf}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}data\PYGZus{}group.RData\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{data\PYGZus{}g10}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{[}\PYG{l+m}{1}\PYG{o}{:}\PYG{l+m}{10}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{]}
+
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}CHECando se os dados est?ão corretos\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}   \PYGZgt{} data\PYGZus{}g10\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{head}\PYG{p}{(}\PYG{n}{data\PYGZus{}g10}\PYG{p}{))}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n \PYGZgt{} data\PYGZus{}group\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{print}\PYG{p}{(}\PYG{n+nf}{tail}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{))}
+
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Question 4: Análise bivariada\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 1. Construa a serie temporal de total\PYGZus{}user. Identifique pereodos de maior e }
+\PYG{c+c1}{\PYGZsh{} menor utilização e discuta os principais padroes observados}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}4.1 \PYGZhy{} series temporais\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} transformando a coluna dteday de uma strig para um objeto que a função autoplot}
+\PYG{c+c1}{\PYGZsh{} possa usar para criar a serie temporal.}
+\PYG{c+c1}{\PYGZsh{} |\PYGZgt{} é o pipe, coloca a fun????o da esquerda como parametro da direita}
+\PYG{c+c1}{\PYGZsh{} mutate cria a coluna data, com o tipo, date, }
+\PYG{c+c1}{\PYGZsh{}select deleta a colunadteday}
+\PYG{c+c1}{\PYGZsh{} as\PYGZus{}tribble transforma o dataset em uma serie temporal}
+\PYG{n}{data\PYGZus{}tempo}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}
+
+\PYG{n}{data\PYGZus{}tempo}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n}{data\PYGZus{}tempo}\PYG{+w}{ }\PYG{o}{|\PYGZgt{}}
+\PYG{+w}{  }\PYG{n+nf}{mutate}\PYG{p}{(}\PYG{n}{day}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{as.Date}\PYG{p}{(}\PYG{n}{dteday}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{|\PYGZgt{}}
+\PYG{+w}{  }\PYG{n+nf}{select}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{dteday}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{|\PYGZgt{}}
+\PYG{+w}{  }\PYG{n+nf}{as\PYGZus{}tsibble}\PYG{p}{(}\PYG{n}{index}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{day}\PYG{p}{)}
+
+\PYG{n}{data\PYGZus{}tempo}
+
+\PYG{c+c1}{\PYGZsh{}plotando a serie temporal com a funçãpo autoplot, usando o dataset que é a nossa serie}
+\PYG{c+c1}{\PYGZsh{}temporal e a variavel que queremos plotar, no caso, o total de usuários}
+\PYG{c+c1}{\PYGZsh{} geomline controla o tamanho da linha da serie}
+\PYG{c+c1}{\PYGZsh{} geom\PYGZus{}smooth faz uma linha de tendendia para melhor visualização}
+\PYG{n+nf}{autoplot}\PYG{p}{(}\PYG{n}{data\PYGZus{}tempo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{total\PYGZus{}user}\PYG{p}{)}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}line}\PYG{p}{(}\PYG{n}{linewidth}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{1.2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{linetype}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}solid\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{alpha}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0.8}\PYG{p}{)}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}smooth}\PYG{p}{(}\PYG{n}{method}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}loess\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{se}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{FALSE}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{linewidth}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{labs}\PYG{p}{(}\PYG{n}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}total\PYGZus{}user\PYGZdq{}}\PYG{p}{,}\PYG{n}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}dia\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Serie temporal de uso de bicicletas ao longo dos dias\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{autoplot}\PYG{p}{(}\PYG{n}{data\PYGZus{}tempo}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{season}\PYG{p}{)}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}line}\PYG{p}{(}\PYG{n}{linewidth}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{1.2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{linetype}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}solid\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{alpha}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{0.8}\PYG{p}{)}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{labs}\PYG{p}{(}\PYG{n}{y}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}season\PYGZdq{}}\PYG{p}{,}\PYG{n}{x}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}dia\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Serie temporal de temporada\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} observando o prot da serie temporal, em janeiro, come??a um periodo de pouco uso.}
+\PYG{l+s}{Por??m esse uso vai aumentando gradativamente at?? o seu apice em junho, no qual, }
+\PYG{l+s}{come??a a cair gradativamente até o final do ano.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{} Isso provavelmente tem sua origem nas mudanças de temporadas, por que, como foi falado na quest??o 2}
+\PYG{l+s}{as temporadas determinam a temperatura, que tem uma correlação forte com a quantidade de usu??rios.}
+\PYG{l+s}{    A exemplo que, no verão e outono , onde a temperatura é maior, a serie atinge o seu apice,}
+\PYG{l+s}{    Já no inverno e na primavera, com temperaturas menores, ela atinge seu ponto mais baixo\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 2. Retome as duas características selecionadas na Quest??o 3. Para cada uma, escolha}
+\PYG{c+c1}{\PYGZsh{} uma visualização e uma medida estat??stica adequadas para analisar sua associa????o com}
+\PYG{c+c1}{\PYGZsh{} total\PYGZus{}user. Apresente e interprete os resultados, comparando\PYGZhy{}os com as conclus??es}
+\PYG{c+c1}{\PYGZsh{} obtidas na Questão}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}4.2 \PYGZhy{} analises das caracteristicas selecionadas\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}as caracteristicas escolhidas na questão 1 foram, temperatura como o fator que}
+\PYG{l+s}{    determina o formato normal do total\PYGZus{}user, e as condições atimosfericas, como fator}
+\PYG{l+s}{    que limita os usu??rios caso chova\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}temperatura}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}variavel 1 \PYGZhy{} temperatura\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}A proposta em questão é, a temperatura esta relacionada com os usuarios totais, }
+\PYG{l+s}{    de uma forma não linear, mas que, na região das amostras, tende a ser linear. PPara}
+\PYG{l+s}{    comprovar isso, poderia por exemplo, plotamos as linhas de tendencia, como na figura 2.}
+\PYG{l+s}{    Em vermelho é a tendencia não linear que mais se adapta a nuvem de pontos, ja em verde}
+\PYG{l+s}{    est?? a tendencia linear, da nuvem de pontos. A regia??o em cinza ?? um intervalo de confian??a}
+\PYG{l+s}{    com aproximadamente 5\PYGZpc{} de erro.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}pltotando o grafico de dispersão com ggplot}
+\PYG{c+c1}{\PYGZsh{}geom\PYGZus{}point diz que ?? um grafico de dispersão com os pontos de tamanho 2}
+\PYG{c+c1}{\PYGZsh{}geom\PYGZus{}smoth cria a linha de tendencia, lm para linear, e loess para se adaptar aos pontos}
+\PYG{n+nf}{ggplot}\PYG{p}{(}\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mapping}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{aes}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{o}{=}\PYG{n}{total\PYGZus{}user}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}point}\PYG{p}{(}\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}smooth}\PYG{p}{(}\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}lm\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{color}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}green\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}smooth}\PYG{p}{(}\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}loess\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{color}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{labs}\PYG{p}{(}\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}total\PYGZus{}user em função da temperatura e condição de chuva\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}as medidas que mais nos d??o informa????es uteis para confirmar essa hip??tese s??o}
+\PYG{l+s}{    a correla????o de pearson ja calculada na quest??o 3 e a de sperman.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}a medida de pearman avalia a rela????o monot??nica entre duas vari??veis cont??nuas ou ordinais. }
+\PYG{c+c1}{\PYGZsh{}Em uma rela????o monot??nica, as vari??veis tendem a mudar juntas mas n??o necessariamente a uma }
+\PYG{c+c1}{\PYGZsh{}taxa constante.O coeficiente de correla????o de Spearman baseia\PYGZhy{}se nos valores classificados }
+\PYG{c+c1}{\PYGZsh{}de cada vari??vel, em vez de os dados brutos.}
+\PYG{c+c1}{\PYGZsh{}Ou se o aumento ?? puramente linear, ambos os coeficientes ser??o 1.}
+\PYG{c+c1}{\PYGZsh{}se uma variavel aumenta quando a outra aumenta, mas sem ser consistente, person ser?? positivo, mas }
+\PYG{c+c1}{\PYGZsh{}menor que 1, e sperman ser?? 1.}
+\PYG{c+c1}{\PYGZsh{}por??m, se a rela????o for n??o linear de forma que em uma parte esteja subindo e em outra descendo, amboso tendem a ir para 0}
+\PYG{n}{sperman}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{cor.test}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{o}{=}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}spearman\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{exact}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{n}{pearson}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{cor.test}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{o}{=}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZsq{}pearson\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{exact}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{FALSE}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}sperman: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sperman}\PYG{o}{\PYGZdl{}}\PYG{n}{estimate}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}pearson: \PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pearson}\PYG{o}{\PYGZdl{}}\PYG{n}{estimate}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{} \PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}nAqui, uma percep????o que podemos ter, com o coeficiente de Sperman sendo menor que o }
+\PYG{l+s}{    de pearson ?? que a nuvem segue uma tendencia linear forte de aumento, porem, em algum ponto}
+\PYG{l+s}{    essa tendendoa muda, o que abaixa o coeficiente de Sperman, o que ?? muito percepitivel na visualiza????o do grafico.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}wheaater condition}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}variavel 2 \PYGZhy{} clima\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}figura 3}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}com essa condi????o, estamos querendo confirmar a hipótese de que a chuva é um fator limitante}
+\PYG{l+s}{    na correlação ente a temperatura e a quantidade de usuários.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}aqui, dois graficos podem nos trazer informações importantes. O primeiro,  figura 3, sendo}
+\PYG{l+s}{    uma variação do anterior, nos da a visualizção da  classe weathersit na disperção.}
+\PYG{l+s}{    Nesse grafico, é possivel observar que todas as amostras de classes com chuva, apresentam}
+\PYG{l+s}{    uma variação maior da tendendcia dos pontos\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}grafico de disper????o separado por classes}
+\PYG{c+c1}{\PYGZsh{}mesmo do anterior, mas as.factor() diz nossas classes e }
+\PYG{c+c1}{\PYGZsh{}scale\PYGZus{}color\PYGZus{}manual, edita as cores e legendas delas}
+\PYG{n+nf}{ggplot}\PYG{p}{(}\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mapping}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{aes}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{o}{=}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{colour}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{as.factor}\PYG{p}{(}\PYG{n}{weathersit}\PYG{p}{)))}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}point}\PYG{p}{(}\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}smooth}\PYG{p}{(}\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}lm\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{color}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}green\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}smooth}\PYG{p}{(}\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}loess\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{color}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{scale\PYGZus{}color\PYGZus{}manual}\PYG{p}{(}\PYG{n}{values}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}purple\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}black\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}orange\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{labels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}clear\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}cloudy\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}light Rain\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Heavy Rain\PYGZdq{}}\PYG{p}{))}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{labs}\PYG{p}{(}\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}total\PYGZus{}user em função da temperatura e condição de chuva\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}figura 4}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}essa premissa pode ser melhor observada no grafico 4, que resalta a diferença nas medias}
+\PYG{l+s}{    observadas entre cada faixa de temperatura, sendo, frio abaixo de 15, normal, entre 15 e 25, }
+\PYG{l+s}{    e quente maior que 25. As medias são as medidas estatisticas usadas para compara????o}
+\PYG{l+s}{    entre as classes nas temperaturas correspondentes.\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}criando as categorias de temperatura r clima}
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp\PYGZus{}cls}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{ifelse}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m}{15}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nf}{ifelse}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m}{25}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{,}\PYG{l+m}{2}\PYG{p}{))}
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp\PYGZus{}cls}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{factor}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{temp\PYGZus{}cls}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                              }\PYG{n}{levels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{),}\PYG{+w}{ }
+\PYG{+w}{                              }\PYG{n}{labels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}frio\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}normal\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}quente\PYGZdq{}}\PYG{p}{))}
+\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{weather\PYGZus{}name}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{factor}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{o}{\PYGZdl{}}\PYG{n}{weathersit}\PYG{p}{,}\PYG{+w}{ }
+\PYG{+w}{                                  }\PYG{n}{levels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{3}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{),}\PYG{+w}{ }
+\PYG{+w}{                                  }\PYG{n}{labels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Clear\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Cloudy\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Light Rain\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Heavy Rain\PYGZdq{}}\PYG{p}{))}
+\PYG{c+c1}{\PYGZsh{}obtendo as medias gerais}
+\PYG{c+c1}{\PYGZsh{}mutate cria nossas colunas}
+\PYG{c+c1}{\PYGZsh{}sumarise resume nossos dados}
+\PYG{c+c1}{\PYGZsh{}groupy\PYGZus{}by separa em classes, e grupo ?? a nossa coluna de grupos}
+\PYG{n}{media\PYGZus{}geral}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{mutate}\PYG{p}{(}
+\PYG{+w}{  }\PYG{n+nf}{summarise}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n+nf}{group\PYGZus{}by}\PYG{p}{(}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{temp\PYGZus{}cls}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{media}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{na.rm}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{TRUE}\PYG{p}{)),}\PYG{+w}{ }
+\PYG{+w}{  }\PYG{n}{grupo}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Geral\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}obtendo as medias de cada classe de clima}
+\PYG{n}{media\PYGZus{}wheater}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{n+nf}{select}\PYG{p}{(}
+\PYG{+w}{  }\PYG{n+nf}{mutate}\PYG{p}{(}
+\PYG{+w}{    }\PYG{n+nf}{summarise}\PYG{p}{(}
+\PYG{+w}{      }\PYG{n+nf}{group\PYGZus{}by}\PYG{p}{(}\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{temp\PYGZus{}cls}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{weather\PYGZus{}name}\PYG{p}{),}
+\PYG{+w}{      }\PYG{n}{media}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{mean}\PYG{p}{(}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{na.rm}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{TRUE}\PYG{p}{),}
+\PYG{+w}{      }\PYG{n}{.groups}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}drop\PYGZdq{}}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n}{grupo}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{as.character}\PYG{p}{(}\PYG{n}{weather\PYGZus{}name}\PYG{p}{)),}
+\PYG{+w}{  }\PYG{n}{temp\PYGZus{}cls}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n}{media}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n}{grupo}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} juntando ambas}
+\PYG{n}{medias}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{bind\PYGZus{}rows}\PYG{p}{(}
+\PYG{+w}{  }\PYG{n}{media\PYGZus{}geral}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n}{media\PYGZus{}wheater}
+\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}ordenando}
+\PYG{n}{medias}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{arrange}\PYG{p}{(}\PYG{n}{medias}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{temp\PYGZus{}cls}\PYG{p}{)}
+\PYG{n}{medias}
+
+\PYG{c+c1}{\PYGZsh{}plotando o grafico de colunas}
+\PYG{c+c1}{\PYGZsh{}fill=grupos separa nossos grupos}
+\PYG{c+c1}{\PYGZsh{}com um processamento anterior, ver no apendice A}
+\PYG{n+nf}{ggplot}\PYG{p}{(}\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{medias}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mapping}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{aes}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{temp\PYGZus{}cls}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{o}{=}\PYG{n}{media}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{fill}\PYG{o}{=}\PYG{n}{grupo}\PYG{p}{))}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}col}\PYG{p}{(}\PYG{n}{position}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{position\PYGZus{}dodge}\PYG{p}{())}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{labs}\PYG{p}{(}\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}total\PYGZus{}user por classe de temperatura\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{       }\PYG{n}{x}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}temperatura por classes\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{       }\PYG{n}{y}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}medias total\PYGZus{}user\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{theme\PYGZus{}bw}\PYG{p}{()}
+
+
+
+
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{c+c1}{\PYGZsh{} 3. Aprofunde a análise da relação entre temperatura e total\PYGZus{}user, diferenciando }
+\PYG{c+c1}{\PYGZsh{}visualmente os dias classificados como low\PYGZus{}usage dos restantes. Discuta os principais}
+\PYG{c+c1}{\PYGZsh{}padr??es observados e avalie se a relação entre temperatura e utilização parece diferir }
+\PYG{c+c1}{\PYGZsh{}entre os grupos}
+\PYG{c+c1}{\PYGZsh{} ==============================================================================}
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}4.3 \PYGZhy{} analise pela classe Low\PYGZus{}Usage\PYGZbs{}n\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{sep}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}
+
+
+\PYG{c+c1}{\PYGZsh{}novamente, utilizando a função, ggplot para plotar um grafico de disperção separado por classes}
+\PYG{n+nf}{ggplot}\PYG{p}{(}\PYG{n}{data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{data\PYGZus{}group}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mapping}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{aes}\PYG{p}{(}\PYG{n}{x}\PYG{o}{=}\PYG{n}{temp}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{y}\PYG{o}{=}\PYG{n}{total\PYGZus{}user}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{colour}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{as.factor}\PYG{p}{(}\PYG{n}{low\PYGZus{}usage}\PYG{p}{)))}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}point}\PYG{p}{(}\PYG{n}{size}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{geom\PYGZus{}smooth}\PYG{p}{(}\PYG{n}{method}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}loess\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{color}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{scale\PYGZus{}color\PYGZus{}manual}\PYG{p}{(}\PYG{n}{values}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}violet\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}brown\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{labels}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Normal\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Low\PYGZus{}uSAGE\PYGZdq{}}\PYG{p}{))}\PYG{o}{+}
+\PYG{+w}{  }\PYG{n+nf}{labs}\PYG{p}{(}\PYG{n}{title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}total\PYGZus{}user em funçãoo da temperatura e condição de chuva\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}como Low usage já é uma variavel derivada de total\PYGZus{}user, as amostras que est??o abaixo}
+\PYG{l+s}{    no grafico acabam sendo de low\PYGZus{}usage 1, já as de cima, low\PYGZus{}usage 0. é notorio que, como}
+\PYG{l+s}{    a tendendia do grafico é ter mais usuarios conforme a temperatura, a concentração de low\PYGZus{}usage}
+\PYG{l+s}{    est?? principalmente em temperaturas menores.\PYGZdq{}}\PYG{p}{)}
+\end{MintedVerbatim}

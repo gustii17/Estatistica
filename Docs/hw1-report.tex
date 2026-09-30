@@ -528,10 +528,234 @@ A inspeção do painel direito da \Cref{fig:boxplots_temp} revela que as tempera
 
 Sob a ótica da mobilidade urbana, esses resultados comprovam que a dinâmica do sistema é otimamente modelada pelo par \textit{Temperatura} e \textit{Clima}: a temperatura fornece a escala contínua de atratividade térmica, enquanto o clima atua como um limitador imediato (presença ou ausência de chuva).
 
-\section{QUESTÃO 4: }\label{sec:questao4}
+\section{QUESTÃO 4: Aprofundando a análise do sistema de bicicletas }\label{sec:questao4}
+
+Nessa questão, será retomado as análises desenvolvidas anteriormente, porém aprofundando a 
+Relação multivariavel. O objetivo é fazer algumas visualizações e métricas para comprovar hipoteses
+anteriormente abordadas e ver a relação multivariavel entre os preditores
+
+\subsection{Serie temporal da temperatura.}
+
+Primeiro, para observar a relação do uso de bicicletas ao longo de aproximadamente um ano, e sua relação com as temporadas
+foi feito uma serie temporal.
+
+Uma série temporal é um conjunto de dados coletados ao longo de intervalos regulares no tempo. No dataset em questão
+existe um preditor relacionado ao tempo que a amostra foi coletada (dtday). Esse preditor revela o fato de cada amostra ter sido 
+coletada com o espao de um dia, começando no dia 13 de janeiro de 2011 e acabando no dia 8 de novembro de 2011, no toral, 300 dias.
+
+Com essa informação, uma serie temporal do uso de biscicletas (total\_usage). a linha em preto é a série temporal, já a linha
+em azul retrata a tendencia do grafico;
+
+\begin{listing}[H]
+\inputminted[
+    firstline=42,
+    lastline=58,
+    linenos,
+    frame=lines,
+    framesep=2mm,
+    fontsize=\footnotesize,
+]{r}{../codigos/Homework_1/question4.R}
+\caption{Trecho do script em R para o plotagem da serie temporal.}
+\end{listing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{assets/Serie_temp.png}
+    \caption{Serie temporal de total\_usage}
+    \label{fig:serie_usage}
+\end{figure}
+
+Foi então constatado que,  a inicio do ano, o uso de biscicletas é muito baixo, porém começa a aumentar rapidamente até atingir seu apice 
+por volta de junho, a partir do qual, começa a diminuir gradativamente até o final do ano, repetindo provavelmente esse
+cico a cada ano. 
+
+Retomando uma conclusão da questão 3, foi constatado uma correlação da temperatura com as temporadas do ano, alem de uma
+tendencia muito forte da temperatura com o total de usuários. Além disso, segundo o dataset, as temporadas começam em \ref{tab:iniciotemp}:
+
+\begin{table}[H]
+    \centering
+    \caption{tabela indicando onde começam as estaç~ies}
+    \label{tab:iniciotemp}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Estação} & inicio\\
+        \midrule
+        1 (Primavera) & janeiro \\
+        2 (Verão)     &  março   \\
+        3 (Outono)    &  junho  \\
+        4 (Inverno)   & setembro \\
+        \bottomrule
+    \end{tabular}
+    \vspace{2mm}
+\end{table}
+
+Ou seja, a concusão feita é de que, as temporadas ao longo do ano determinam a temperatura, e a temperatura influencia fortemente 
+no total de usuários. Essa conclusão é observada a partir de que, primavera e inverno são as  temporadas mais frias
+e, se acordo com o grafico, possuem menos usuários, e verão e outrono são mais quentes, com, de acordo com o grafico, possuindo mais usuários.
+
+\subsection{Aprofundando as caracteristicas escolhidas na quesão 3}
+
+Após as análises da questão anterior, foram escolhidas 2 caracteristicas que mais influenciavam na quantidade total de usuários: 
+temperatura \textbf{(temp)} e clima \textbf{(weathersit)}. A hipótese era que, a temperatura determinava a quantidade de usuários
+e a condição climatica limitava a quantidade caso ocorresse chuva. Em especial, foi concluido que a temperatura
+se relacionava de uma forma não linear com a quantidade de usuários, mas que, no espaço amostral dado, esse comportamento
+se assemelhava a um padrão linear.
+
+Nesse contexto, o objetivo aqui é elencar visualizações e metricas que comprovem as hipóteses para essas duas caracteristicas;
+
+\subsubsection{Temperatura}
+
+Para comprovar que a temperatura esta relacionada com a quantidade total de usuários, foi aprofundado a análise do rafico de disperção, 
+por de traçar uma linha de tendencia linear e uma linha de tendencia que se adaptava a amostra no grafico de diperção. A figura
+\ref{fig:disper_tendencia} Retrata as tendencias de disperção, em verde, foi traçada uma tendencia linear e em vermelho
+foi usada uma curva de loess (suavização de gráfico de dispersão estimada localmente), que ajusta os parametros conforme a tendencia localizadodos pontos.
+AMbas foram feitas usando a função "geom\_smooth". Além dessa métrica, o grafico também retrata a separação
+pela classe weathersit que será abordada posteriormente.
+
+\begin{listing}[H]
+\inputminted[
+    firstline=143,
+    lastline=148,
+    linenos,
+    frame=lines,
+    framesep=2mm,
+    fontsize=\footnotesize,
+]{r}{../codigos/Homework_1/question4.R}
+\caption{Trecho do script em R para plotar o grafico de disperção.}
+\end{listing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{assets/dispersao_tendencia.png}
+    \caption{tendencia do grafico de dispeção: verde: linha de tendencia linear; vermelho: linha de tendencia não linear; Area cinza: margem de erro das tendencias}
+    \label{fig:disper_tendencia}
+\end{figure}
+
+Atravez desse grafico, é perceptivel que a tendencia dos pontos é não linear, conforme a curva vermetlha, havendo um decrecimento
+em cerca de 33 graus. A utilização de dois parametros pode confirmar esse fato, o coeficiente de perarson e o coeficiente de Spearman.
+O coeficiente de Pearson, como já citado, ressalta o queanto duas variaveis são relacionadas de forma linear, já o coeficiente de 
+Spearman avalia a relação monotônica entre duas variáveis, de forma que, quanto mais ambas crescem juntas, mesmo que não linearmente
+o coeficiente será maior. A tabela \ref{tab:coeficiente} descreve ambos para o dataset:
+
+\begin{table}[H]
+    \centering
+    \caption{tabela indicando os coeficientes de dorrelação entre temperatura e usuários}
+    \label{tab:coeficiente}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{coeficiente} & valor\\
+        \midrule
+        1 (Pearson) & 0.7839\\
+        2 (Searman) &  0.7055  \\
+        \bottomrule
+    \end{tabular}
+    \vspace{2mm}
+\end{table}
+
+Ambos os coeficientes foram altos, indicando uma forte tendencia de crescimento. Mas como o coeficiente 
+de Spearman tem um valor menor que o de Pearson, a Interpretação desse valor ressalta que em alguma parte da amostra
+á um decrescimento, que não favorece o coeficiente de spearman. o que é confirmado visualmente pela figura \ref{fig:disper_tendencia};
+
+\subsubsection{Clima}
+
+A hipotese é que o clima está relacionado a uma maior disperção das amostras quando em dias chuvosos, ao limitar a quantidade de usuários.
+Para investigar a hipotese, foram desenvolvidos dois graficos de visualização que comparavam temperatura e quantidade de usuários, para retratar a tendencia normal das amostras.
+Em ambos houve uma separação por classes conforma variavel \textbf{(weathersit)} para verificar se essa limitação acontecia. o primeiro grafico é a figura
+\ref{fig:disper_tendencia}, o segundo \ref{fig:weatersit_principal}.
+
+\begin{listing}[H]
+\inputminted[
+    firstline=199,
+    lastline=205,
+    linenos,
+    frame=lines,
+    framesep=2mm,
+    fontsize=\footnotesize,
+]{r}{../codigos/Homework_1/question4.R}
+\caption{Trecho do script em R para o plotagem do grafico de barras.}
+\end{listing}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{assets/medias_total_user.png}
+    \caption{Grafico de disperção separado pela temperatura e pela classes whartersit}
+    \label{fig:weatersit_principal}
+\end{figure}
+
+O primeiro retrata na disperção das amostras a separação por classes. É notorio que, enquanto a tendencia segue a linha de correlação entre temeratura 
+e total de usuários, quase todas as amostras da classe de chuva fraca apresentam valores muito pequnos, provavelmente outiliers. isso é confirmado no grafico \ref{fig:weatersit_principal},
+no qual, a temperatura foi dividida em, fria (menor que 15 graus) normal (entre 15 e 25 graus) e quente (maior que 25 graus). Foram então pplotadas as medias para cada classe,
+de acordo com as medidas da tabela \ref{tab:medias_clima}:
+
+\begin{table}[H]
+    \centering
+    \caption{tabela de medias da quantidade de usuários, por temperatura, dividia em classes de clima}
+    \label{tab:medias_clima}
+    \begin{tabular}{lcccc}
+        \toprule
+        \textbf{temperatura} & {media normal} & {media clima limpo} & {media colima nublado} & {media clima chuvoso}\\
+        \midrule
+        1 (frio) & 1804 & 1900 & 1761 & 936 \\
+        2 (normal) &  3715 & 4096 & 3432 & 1827 \\
+        3 (quente) & 4524 & 4709  & 4143 & 1842 \\
+        \bottomrule
+    \end{tabular}
+    \vspace{2mm}
+\end{table}
+
+
+De acordo coos as médias, é bem perceptivel que quanto maior a chuva, menor a quantidade de usuários. Em climas nublados, há pouca diferença
+por mais que ainda seja uma diferença significativa. Em climas chuvosos, entretando, há uma diferença muito grande, a ponto de serem considerados outiliers em sua categoria.
+
+
+\subsection{Analisando low\_usage de acordo com a temperatura}
+
+Aqui, estamos procurando quais paõres realacionados a teperatura poderia explicar o baixo uso
+de bicicletas. 
+
+Para essa análise, foi feito o mesmo grafico da seção 4.2, porém, diferenciando os dias em que houve
+pouco uso:
+\begin{listing}[H]
+\inputminted[
+    firstline=219,
+    lastline=224,
+    linenos,
+    frame=lines,
+    framesep=2mm,
+    fontsize=\footnotesize,
+]{r}{../codigos/Homework_1/question4.R}
+\caption{Trecho do script em R para o plotagem do grafico de disperção por classes}
+\end{listing}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{assets/class_low_usage.png}
+    \caption{Grafico de disperção com a classe low\_usage}
+    \label{fig:disp_low}
+\end{figure}
+
+De acordo com o grafico e com as análises anteriores, é percebido que o baixo uso, com
+aproximadamente menos que 2000, corre principalmente em temperaturas baixas, com
+apenas poucos outiliers, muito, em decorrencia da limitação da chuva já analisada, ocorrendo
+em temperaturas mais altas. Esse fator confirma as nossas análises anteriores. 
+
+Uma pequena observação é que, como o baixo uso é calculada conforme a quantidade de uso, essa análise já era esperada. 
 
 \section*{CONCLUSÃO}\label{sec:conclusao}
 \addcontentsline{toc}{section}{CONCLUSÃO}
+
+Por fim, a partir das análises, é possivel concluir que a tendencia geral da utilização de bicicletas
+é definida por dois fatores. O primeiro sendo a temperatura, determinada de acordo com a estação. Ela fornece a linha de tendencia geral, de
+forma não linear, mas que, no espaço amostral dado, se assemelha a uma forma linear, ou seja, a medida
+que ela cresce, a quantidade de usuários cresce. Além desse fator, o clima é uma variável limitante para o total de 
+usuários, ou seja, em climas limpos, a medida de usuários segue a temperatura, mas, se aproximando de climas chuvosos,
+é bem provavel que não se tenha muitas pessoas utilizando o serviço.
+
+
+
+
+
 
 \newpage
 \appendix
@@ -552,7 +776,7 @@ Os códigos a seguir apresentam o código-fonte completo desenvolvido em R para 
         \midrule
         Davi S. T. Magalhães & 1 e 2 & main.R \\
         Giovanni G. R. Milan & 3 & question3.R \\
-        Gustavo O. Seabra & 4 & - \\
+        Gustavo O. Seabra & 4 & question4.R \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -578,8 +802,8 @@ Os códigos a seguir apresentam o código-fonte completo desenvolvido em R para 
     fontsize=\scriptsize,
 ]{r}{../codigos/Homework_1/question3.R}
 
-\begin{comment}
-\subsection{Script questão 4 (___.R)}
+
+\subsection{Script questão 4 (question4.R)}
 \inputminted[
     linenos,
     breaklines,
@@ -587,8 +811,7 @@ Os códigos a seguir apresentam o código-fonte completo desenvolvido em R para 
     frame=lines,
     framesep=2mm,
     fontsize=\scriptsize,
-]{r}{../codigos/Homework_1/___.R}
-\end{comment}
+]{r}{../codigos/Homework_1/question4.R}
 
 \bibliography{refs}
 \end{document}

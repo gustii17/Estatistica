@@ -1,12 +1,19 @@
 \begin{MintedVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{} Matriculas: 554934, 546474, 578412}
 
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}rstudioapi\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }
+
 \PYG{n+nf}{rm}\PYG{p}{(}\PYG{n}{list}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nf}{ls}\PYG{p}{())}
 \PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{digits}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{4}\PYG{p}{)}
 
 \PYG{c+c1}{\PYGZsh{} Carrega o dataset original}
-\PYG{n}{folder\PYGZus{}path}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}/Users/fabiomachadomilan/Estatistica/codigos/Homework\PYGZus{}1/\PYGZdq{}}
-\PYG{n}{dados\PYGZus{}originais}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{n+nf}{paste0}\PYG{p}{(}\PYG{n}{folder\PYGZus{}path}\PYG{p}{,}\PYG{l+s}{\PYGZdq{}HW1\PYGZus{}bike\PYGZus{}sharing.csv\PYGZdq{}}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{row.names}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}rstudioapi\PYGZdq{}}\PYG{p}{)}\PYG{+w}{ }
+\PYG{n}{k}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{getSourceEditorContext}\PYG{p}{()}\PYG{o}{\PYGZdl{}}\PYG{n}{path}\PYG{+w}{ }
+\PYG{n+nf}{setwd}\PYG{p}{(}\PYG{n+nf}{dirname}\PYG{p}{(}\PYG{n}{k}\PYG{p}{))}\PYG{+w}{ }
+\PYG{n}{dados\PYGZus{}originais}\PYG{+w}{ }\PYG{o}{\PYGZlt{}\PYGZhy{}}\PYG{+w}{ }\PYG{n+nf}{read.csv}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}HW1\PYGZus{}bike\PYGZus{}sharing.csv\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}folder\PYGZus{}path \PYGZlt{}\PYGZhy{} \PYGZdq{}C:\PYGZbs{}Users\PYGZbs{}GUSTAVO\PYGZbs{}OneDrive\PYGZbs{}trabalhos\PYGZbs{}faculdade\PYGZbs{}estatistica\PYGZbs{}Estatistica\PYGZbs{}codigos\PYGZbs{}Homework\PYGZus{}1\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{}dados\PYGZus{}originais \PYGZlt{}\PYGZhy{} read.csv(paste0(folder\PYGZus{}path,\PYGZdq{}HW1\PYGZus{}bike\PYGZus{}sharing.csv\PYGZdq{}), row.names = 1)}
 
 \PYG{c+c1}{\PYGZsh{} Questão 1}
 \PYG{n+nf}{cat}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}\PYGZbs{}n\PYGZdq{}}\PYG{p}{)}
