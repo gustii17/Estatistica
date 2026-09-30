@@ -1,0 +1,19 @@
+# LaTeX - Arquivos Auxiliares
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+_minted-*/
+
+# R - Arquivos Auxiliares
+*.Rhistory
+*.RData
+*.Ruserdata
+.Rproj.user/
