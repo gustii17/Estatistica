@@ -1,11 +1,18 @@
 # Matriculas: 554934, 546474, 578412
 
+library("rstudioapi") 
+
 rm(list = ls())
 options(digits = 4)
 
 # Carrega o dataset original
-folder_path <- "/Users/fabiomachadomilan/Estatistica/codigos/Homework_1/"
-dados_originais <- read.csv(paste0(folder_path,"HW1_bike_sharing.csv"), row.names = 1)
+library("rstudioapi") 
+k <- getSourceEditorContext()$path 
+setwd(dirname(k)) 
+dados_originais <- read.csv("HW1_bike_sharing.csv")
+
+#folder_path <- "C:\Users\GUSTAVO\OneDrive\trabalhos\faculdade\estatistica\Estatistica\codigos\Homework_1"
+#dados_originais <- read.csv(paste0(folder_path,"HW1_bike_sharing.csv"), row.names = 1)
 
 # Questão 1
 cat("\n")

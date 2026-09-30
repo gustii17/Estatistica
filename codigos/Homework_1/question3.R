@@ -2,9 +2,11 @@ rm(list = ls()) #Cleaning environment
 options(digits = 4)
 
 # Set your folder path correctly (adjust if necessary before running!)
-folder_path <- "/Users/fabiomachadomilan/Estatistica/codigos/Homework_1/"
-
-load(paste0(folder_path, "data_group.RData"))
+library("rstudioapi") 
+k <- getSourceEditorContext()$path 
+setwd(dirname(k)) 
+#folder_path <- "/Users/fabiomachadomilan/Estatistica/codigos/Homework_1/"
+load(paste0("data_group.RData"))
 data_g10 <- data_group[1:10, ]
 
 cat("CHECKING DATA LOADING\n")
