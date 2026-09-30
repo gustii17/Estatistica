@@ -1,14 +1,14 @@
 # Matriculas: 554934, 546474, 578412
 
-library("rstudioapi") 
-
 rm(list = ls())
 options(digits = 4)
 
-# Carrega o dataset original
+# Define a pasta do script como diretório de trabalho
 library("rstudioapi") 
 k <- getSourceEditorContext()$path 
 setwd(dirname(k)) 
+
+# Carrega o dataset original
 dados_originais <- read.csv("HW1_bike_sharing.csv")
 
 #folder_path <- "C:\Users\GUSTAVO\OneDrive\trabalhos\faculdade\estatistica\Estatistica\codigos\Homework_1"
@@ -172,24 +172,40 @@ cat("\nNúmero de outliers: ", n_outliers, " (", round(n_outliers / nrow(data_gr
 # 2.4 Gráficos
 cat("\n\n2.4 Gráficos\n")
 
+# Funções que desenham os gráficos (reutilizadas para a tela e para os PDFs)
+plot_histograma <- function() {
+  hist(total_user, 
+       main = "Histograma: Total de Usuários",
+       xlab = "Total de Usuários",
+       ylab = "Frequência",
+       col = "steelblue",
+       breaks = 30)
+  abline(v = q1, col = "red", lty = 2, lwd = 2)
+  abline(v = q2, col = "green", lty = 2, lwd = 2)
+  abline(v = q3, col = "orange", lty = 2, lwd = 2)
+  legend("topleft", c("Q1", "Q2", "Q3"), col = c("red", "green", "orange"), lty = 2)
+}
+
+plot_boxplot <- function() {
+  boxplot(total_user, main = "Boxplot: Total de Usuários", ylab = "Total de Usuários", col = "steelblue")
+}
+
+# Mostra na tela (lado a lado)
 par(mfrow = c(1, 2), mar = c(4, 4, 2, 2))
-
-# Histograma
-hist(total_user, 
-     main = "Histograma: Total de Usuários",
-     xlab = "Total de Usuários",
-     ylab = "Frequência",
-     col = "steelblue",
-     breaks = 30)
-abline(v = q1, col = "red", lty = 2, lwd = 2)
-abline(v = q2, col = "green", lty = 2, lwd = 2)
-abline(v = q3, col = "orange", lty = 2, lwd = 2)
-legend("topleft", c("Q1", "Q2", "Q3"), col = c("red", "green", "orange"), lty = 2)
-
-# Boxplot
-boxplot(total_user, main = "Boxplot: Total de Usuários", ylab = "Total de Usuários", col = "steelblue")
-
+plot_histograma()
+plot_boxplot()
 par(mfrow = c(1, 1))
+
+# Salva cada gráfico em um PDF separado (na pasta do script)
+pdf("histograma_total_user.pdf", width = 7, height = 5)
+plot_histograma()
+dev.off()
+
+pdf("boxplot_total_user.pdf", width = 5, height = 6)
+plot_boxplot()
+dev.off()
+
+cat("Gráficos salvos em 'histograma_total_user.pdf' e 'boxplot_total_user.pdf'\n")
 
 # Medidas de forma
 skewness_val <- mean((total_user - mean(total_user))^3) / sd(total_user)^3
