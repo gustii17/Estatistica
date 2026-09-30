@@ -205,7 +205,7 @@ O dataset de 300 observações foi caracterizado quanto à natureza de suas vari
 
 \subsubsection{Variáveis categóricas}
 
-Para a variável \textit{season} estação do ano, foram observadas as seguintes frequências:
+Para a variável \textit{season} (estação do ano), foram observadas as seguintes frequências:
 
 \begin{itemize}
     \item 1 (Primavera): 67 observações
@@ -256,7 +256,7 @@ A variável analisada foi \textbf{total\_user} por representar o comportamento a
     \label{tab:quartis}
     \begin{tabular}{lc}
         \toprule
-        \textbf{Quartil} & \textbf{usuários} \\
+        \textbf{Quartil} & \textbf{Valor} \\
         \midrule
         Q1 & 2184,50 \\
         Q2 & 4038,00 \\
@@ -286,9 +286,9 @@ Os limites para identificação de outliers utilizam o critério do intervalo in
 Considerando os limites calculados:
 
 \begin{itemize}
-    \item Número de outliers detectados: 0 
-    \item Mínimo observado: 431 usuários, dentro dos limites
-    \item Máximo observado: 6043 usuários, dentro dos limites
+    \item Número de outliers detectados: 0
+    \item Mínimo observado: 431 usuários
+    \item Máximo observado: 6043 usuários
 \end{itemize}
 
 Conclui-se que o sistema operou de forma estável durante o período analisado, sem anomalias ou dias extremamente anormais.
@@ -320,6 +320,24 @@ A \Cref{tab:medidas_forma} apresenta as medidas quantitativas da distribuição.
         \bottomrule
     \end{tabular}
 \end{table}
+
+\subsubsection{Visualizações gráficas}
+
+As Figuras \ref{fig:histograma} e \ref{fig:boxplot} apresentam as visualizações gráficas da distribuição de \textit{total\_user}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/histograma_total_user.pdf}
+    \caption{Histograma da distribuição de usuários totais (\textit{total\_user}).}
+    \label{fig:histograma}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/boxplot_total_user.pdf}
+    \caption{Boxplot da variável \textit{total\_user}.}
+    \label{fig:boxplot}
+\end{figure}
 
 \subsection{Variável binária \textit{low\_usage}}
 
