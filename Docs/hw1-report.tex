@@ -72,9 +72,293 @@ Como Ross introduz, "in today’s world that in order to learn about something y
 
 A fim de "revisar e se familizar com os conceitos de estatística descritiva" \cite{hw1_assignment}, o objetivo é aplicar esses conceitos na análise de um sistema de compartilhamento de bicicletas localizado nos Estados Unidos. O conjunto de dados original, \textit{HW1\_bike\_sharing.csv}, contém observações diárias referentes às condições meteorológicas, estações do ano e o volume de usuários do sistema. 
 
-\section{QUESTÃO 1: }\label{sec:questao1}
+\section{QUESTÃO 1: Construção do Dataset Específico do Grupo}\label{sec:questao1}
 
-\section{QUESTÃO 2: }\label{sec:questao2}
+\subsection{Metodologia de seleção da amostra}
+
+Conforme as instruções da Questão 1, foi realizado o seguinte procedimento para construir o dataset específico do grupo. Os números de matrícula dos integrantes são: 554934, 546474 e 578412. O maior valor é definido como:
+
+\begin{equation}
+M = \max(554934, 546474, 578412) = 578412
+\end{equation}
+
+O valor de $r$ é calculado como:
+
+\begin{equation}
+r = 1 + (M \bmod 100) = 1 + (578412 \bmod 100) = 1 + 12 = 13
+\end{equation}
+
+Foram selecionadas 300 observações consecutivas a partir da observação 13, conforme descrito na \Cref{tab:amostra_info}.
+
+\begin{table}[H]
+    \centering
+    \caption{Informações da amostra selecionada.}
+    \label{tab:amostra_info}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Atributo} & \textbf{Valor} \\
+        \midrule
+        Observações selecionadas & 13 a 312 \\
+        Primeira data & 2011-01-13 \\
+        Última data & 2011-11-08 \\
+        Total de observações & 300 \\
+        Período & Aproximadamente 10 meses \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Descrição do dataset original}
+
+O arquivo \textit{HW1\_bike\_sharing.csv} contém dados sobre um sistema de compartilhamento de bicicletas em uma cidade norte-americana. O dataset original apresenta 731 observações diárias e as seguintes variáveis: índice de registro (\textit{instant}), data da observação (\textit{dteday}), estação do ano (\textit{season}), condição meteorológica (\textit{weathersit}), temperatura normalizada (\textit{temp}), número de usuários casuais (\textit{casual}) e número de usuários registrados (\textit{registered}).
+
+\subsection{Cálculos manuais: primeiras 10 observações}
+
+As primeiras 10 observações do \textit{data\_group} correspondem aos dias 13 a 22 de janeiro de 2011. Para cada observação, a variável \textit{total\_user} foi calculada como:
+
+\begin{equation}
+\text{total\_user} = \text{casual} + \text{registered}
+\end{equation}
+
+Os dados das primeiras 10 observações encontram-se sintetizados na \Cref{tab:primeiras_10}.
+
+\begin{table}[H]
+    \centering
+    \caption{Primeiras 10 observações do dataset do grupo.}
+    \label{tab:primeiras_10}
+    \begin{tabular}{crrr}
+        \toprule
+        \textbf{Data} & \textbf{Casual} & \textbf{Registrado} & \textbf{Total} \\
+        \midrule
+        2011-01-13 & 38 & 1368 & 1406 \\
+        2011-01-14 & 54 & 1367 & 1421 \\
+        2011-01-15 & 222 & 1026 & 1248 \\
+        2011-01-16 & 251 & 953 & 1204 \\
+        2011-01-17 & 117 & 883 & 1000 \\
+        2011-01-18 & 9 & 674 & 683 \\
+        2011-01-19 & 78 & 1572 & 1650 \\
+        2011-01-20 & 83 & 1844 & 1927 \\
+        2011-01-21 & 75 & 1468 & 1543 \\
+        2011-01-22 & 93 & 888 & 981 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsubsection{Cálculo da média aritmética}
+
+A média aritmética é definida como:
+
+\begin{equation}
+\bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}
+\end{equation}
+
+Para os dados das primeiras 10 observações:
+
+\begin{equation}
+\bar{x} = \frac{13063}{10} = 1306,3 \text{ usuários}
+\end{equation}
+
+\subsubsection{Cálculo da mediana}
+
+A mediana é o valor central quando os dados estão ordenados. Para $n = 10$, a mediana é a média entre a 5ª e 6ª observações ordenadas.
+
+Os valores ordenados são: 683, 981, 1000, 1204, 1248, 1406, 1421, 1543, 1650, 1927.
+
+\begin{equation}
+\text{Mediana} = \frac{1248 + 1406}{2} = 1327 \text{ usuários}
+\end{equation}
+
+\subsubsection{Cálculo do desvio padrão amostral}
+
+O desvio padrão amostral é calculado como:
+
+\begin{equation}
+s = \sqrt{\frac{\sum_{i=1}^{n}(x_i - \bar{x})^2}{n-1}}
+\end{equation}
+
+Resultado: $s = 362,79$ usuários
+
+\subsubsection{Cálculo dos quartis}
+
+Os quartis dividem os dados em quatro partes iguais. Para Q1:
+
+\begin{equation}
+Q_1 = 995,25 \text{ usuários}
+\end{equation}
+
+Para Q3:
+
+\begin{equation}
+Q_3 = 1569,75 \text{ usuários}
+\end{equation}
+
+Intervalo Interquartil:
+
+\begin{equation}
+IQR = Q_3 - Q_1 = 1569,75 - 995,25 = 574,5 \text{ usuários}
+\end{equation}
+
+\section{QUESTÃO 2: Caracterização do Dataset}\label{sec:questao2}
+
+\subsection{Classificação das variáveis}
+
+O dataset de 300 observações foi caracterizado quanto à natureza de suas variáveis. As variáveis \textit{season} e \textit{weathersit} são categóricas, enquanto \textit{temp}, \textit{casual}, \textit{registered} e a variável derivada \textit{total\_user} são numéricas contínuas.
+
+\subsubsection{Variáveis categóricas}
+
+Para a variável \textit{season} estação do ano, foram observadas as seguintes frequências:
+
+\begin{itemize}
+    \item 1 (Primavera): 67 observações
+    \item 2 (Verão): 92 observações
+    \item 3 (Outono): 94 observações
+    \item 4 (Inverno): 47 observações
+\end{itemize}
+
+Para a variável \textit{weathersit} (condição meteorológica):
+
+\begin{itemize}
+    \item 1 (Céu limpo): 186 observações
+    \item 2 (Nublado): 104 observações
+    \item 3 (Chuva fraca): 10 observações
+\end{itemize}
+
+Não foram detectados valores ausentes no dataset.
+
+\subsection{Medidas de tendência central das variáveis numéricas}
+
+A \Cref{tab:tendencia_central} apresenta as medidas de tendência central para as variáveis numéricas.
+
+\begin{table}[H]
+    \centering
+    \caption{Medidas de tendência central para variáveis numéricas.}
+    \label{tab:tendencia_central}
+    \begin{tabular}{lrrr}
+        \toprule
+        \textbf{Variável} & \textbf{Média} & \textbf{Mediana} & \textbf{Assimetria} \\
+        \midrule
+        temp & 21,32 & 22,20 & Negativa \\
+        casual & 754,65 & 676,00 & Positiva \\
+        registered & 2814,56 & 3110,50 & Negativa \\
+        total\_user & 3569,21 & 4038,00 & Negativa \\
+        \bottomrule
+    \end{tabular}
+    \vspace{2mm}
+    \caption*{\small{\textbf{Nota:} A assimetria é determinada pela relação entre média e mediana.}}
+\end{table}
+
+\subsection{Quartis e intervalo interquartil}
+
+A variável analisada foi \textbf{total\_user} por representar o comportamento agregado do sistema. Os quartis foram calculados utilizando a função nativa do R com método de interpolação linear.
+
+\begin{table}[H]
+    \centering
+    \caption{Quartis da variável \textit{total\_user}.}
+    \label{tab:quartis}
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Quartil} & \textbf{usuários} \\
+        \midrule
+        Q1 & 2184,50 \\
+        Q2 & 4038,00 \\
+        Q3 & 4681,00 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+O intervalo interquartil é calculado como:
+
+\begin{equation}
+IQR = Q_3 - Q_1 = 4681,00 - 2184,50 = 2496,50 \text{ usuários}
+\end{equation}
+
+\subsubsection{Identificação de outliers}
+
+Os limites para identificação de outliers utilizam o critério do intervalo interquartil multiplicado por 1,5:
+
+\begin{equation}
+\text{Limite inferior} = Q_1 - 1,5 \times IQR = 2184,50 - 1,5 \times 2496,50 = -1560,25
+\end{equation}
+
+\begin{equation}
+\text{Limite superior} = Q_3 + 1,5 \times IQR = 4681,00 + 1,5 \times 2496,50 = 8425,75
+\end{equation}
+
+Considerando os limites calculados:
+
+\begin{itemize}
+    \item Número de outliers detectados: 0 
+    \item Mínimo observado: 431 usuários, dentro dos limites
+    \item Máximo observado: 6043 usuários, dentro dos limites
+\end{itemize}
+
+Conclui-se que o sistema operou de forma estável durante o período analisado, sem anomalias ou dias extremamente anormais.
+
+\subsection{Análise gráfica: distribuição de \textit{total\_user}}
+
+A distribuição da variável \textit{total\_user} apresenta as seguintes características:
+
+\begin{itemize}
+    \item Forma: Aproximadamente simétrica com assimetria negativa moderada
+    \item Concentração: Maioria entre 2500 e 5000 usuários
+    \item Pico principal: Região de 4000--4500 usuários
+    \item Cauda: Mais pronunciada no lado esquerdo
+\end{itemize}
+
+A \Cref{tab:medidas_forma} apresenta as medidas quantitativas da distribuição.
+
+\begin{table}[H]
+    \centering
+    \caption{Medidas de forma da distribuição de \textit{total\_user}.}
+    \label{tab:medidas_forma}
+    \begin{tabular}{lrr}
+        \toprule
+        \textbf{Medida} & \textbf{Valor} & \textbf{Interpretação} \\
+        \midrule
+        Assimetria (Skewness) & -0,5069 & Negativa moderada \\
+        Curtose & -1,0197 & Cauda mais leve que normal \\
+        Coef. Variação & 38,84\% & Variabilidade moderada \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Variável binária \textit{low\_usage}}
+
+Uma variável binária foi criada para classificar dias de baixa utilização conforme a definição:
+
+\begin{equation}
+\text{low\_usage} = \begin{cases}
+1, & \text{se } \text{total\_user} < Q_1 \\
+0, & \text{caso contrário}
+\end{cases}
+\end{equation}
+
+Com critério $Q_1 = 2184,50$ usuários, os resultados encontram-se na \Cref{tab:low_usage}.
+
+\begin{table}[H]
+    \centering
+    \caption{Distribuição da variável \textit{low\_usage}.}
+    \label{tab:low_usage}
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Categoria} & \textbf{Contagem} & \textbf{Proporção} & \textbf{Percentual} \\
+        \midrule
+        low\_usage = 0 & 225 & 0,75 & 75,00\% \\
+        low\_usage = 1 & 75 & 0,25 & 25,00\% \\
+        \midrule
+        Total & 300 & 1,00 & 100,00\% \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Um dia é classificado como de baixa utilização quando o total de usuários é menor que 2184,50 usuários, correspondendo ao primeiro quartil da distribuição. Isto representa a utilização nos 25\% dos dias menos ocupados.
+
+A relevância desta categorização para futuras análises inclui:
+
+\begin{itemize}
+    \item Investigações sobre características dos dias com baixa utilização
+    \item Identificação de padrões sazonais e climáticos
+    \item Informação para estratégias operacionais do sistema
+\end{itemize}
 
 \section{QUESTÃO 3: Análise dos dias de menor utilização}\label{sec:questao3}
 
